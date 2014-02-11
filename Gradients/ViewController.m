@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "GradientOperation.h"
-#import "SaveImageOperation.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UISwitch *saveSwitch;
@@ -29,8 +28,7 @@
     [super viewDidLoad];
     
     _queue = [NSOperationQueue new];
-    _writeQueue = [NSOperationQueue new];
-    _writeQueue.maxConcurrentOperationCount = 1;
+    _queue.maxConcurrentOperationCount = 1;
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,24 +37,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setImage:(UIImage *)image {
-    if (self.saveSwitch.isOn) {
-        SaveImageOperation *op = [[SaveImageOperation alloc] initWithImage:image];
-        __weak ViewController *weakSelf = self;
-        op.completionBlock = ^{
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                weakSelf.imageView.image = image;
-            }];
-        };
-        [_writeQueue addOperation:op];
-    } else {
-        self.imageView.image = image;
-    }
-}
-
 - (IBAction)generateAction:(id)sender {
     
-    NSUInteger count = 1000;
+    NSUInteger count = 1024;
     
     __weak ViewController *weakSelf = self;
     
@@ -69,16 +52,20 @@
     self.generateButton.enabled = NO;
     self.saveSwitch.enabled = NO;
     
-    for (NSUInteger i=0; i<count; i++) {
+    BOOL saveToCameraRoll = self.saveSwitch.isOn;
+    
+    __weak NSOperation *weakGroupOperation = groupOperation;
+    for (NSUInteger i=0; i<count; i++) @autoreleasepool {
         UIColor *startColor = [UIColor colorWithHue:((float) i/count) saturation:((float) (count - i)/count) brightness:0.8 alpha:1.0];
         UIColor *endColor = [UIColor colorWithHue:((float) (count - i)/count) saturation:1.0 brightness:((float) i/count) alpha:1.0];
         
-        GradientOperation *op = [[GradientOperation alloc] initWithColors:@[startColor, endColor]];
+        GradientOperation *op = [[GradientOperation alloc] initWithColors:@[startColor, endColor] saveToCameraRoll:saveToCameraRoll index:i];
         __weak GradientOperation *weakOp = op;
         op.completionBlock = ^{
+            [weakGroupOperation removeDependency:weakOp];
             UIImage *outputImage = weakOp.outputImage;
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                [weakSelf setImage:outputImage];
+                [weakSelf.imageView setImage:outputImage];
             }];
         };
         [groupOperation addDependency:op];

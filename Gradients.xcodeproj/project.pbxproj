@@ -17,7 +17,6 @@
 		5B516CD218A2693700D5F306 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B516CD118A2693700D5F306 /* ViewController.m */; };
 		5B516CD418A2693700D5F306 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B516CD318A2693700D5F306 /* Images.xcassets */; };
 		5B516CF218A26A3500D5F306 /* GradientOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B516CF118A26A3500D5F306 /* GradientOperation.m */; };
-		5B516CF518A26F4600D5F306 /* SaveImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B516CF418A26F4600D5F306 /* SaveImageOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +37,6 @@
 		5B516CDA18A2693800D5F306 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		5B516CF018A26A3500D5F306 /* GradientOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientOperation.h; sourceTree = "<group>"; };
 		5B516CF118A26A3500D5F306 /* GradientOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientOperation.m; sourceTree = "<group>"; };
-		5B516CF318A26F4600D5F306 /* SaveImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveImageOperation.h; sourceTree = "<group>"; };
-		5B516CF418A26F4600D5F306 /* SaveImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveImageOperation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +91,6 @@
 				5B516CD118A2693700D5F306 /* ViewController.m */,
 				5B516CF018A26A3500D5F306 /* GradientOperation.h */,
 				5B516CF118A26A3500D5F306 /* GradientOperation.m */,
-				5B516CF318A26F4600D5F306 /* SaveImageOperation.h */,
-				5B516CF418A26F4600D5F306 /* SaveImageOperation.m */,
 				5B516CD318A2693700D5F306 /* Images.xcassets */,
 				5B516CC218A2693700D5F306 /* Supporting Files */,
 			);
@@ -178,7 +173,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B516CF518A26F4600D5F306 /* SaveImageOperation.m in Sources */,
 				5B516CD218A2693700D5F306 /* ViewController.m in Sources */,
 				5B516CF218A26A3500D5F306 /* GradientOperation.m in Sources */,
 				5B516CCC18A2693700D5F306 /* AppDelegate.m in Sources */,
@@ -241,7 +235,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -274,7 +268,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

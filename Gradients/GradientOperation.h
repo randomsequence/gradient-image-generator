@@ -11,5 +11,7 @@
 @interface GradientOperation : NSOperation
 @property (nonatomic, strong, readonly) UIImage *outputImage;
 @property (nonatomic, strong, readonly) NSArray *colors;
-- (instancetype)initWithColors:(NSArray *)colors;
+@property (nonatomic, readonly) BOOL saveToCameraRoll;
+@property (nonatomic, readonly) NSUInteger index;
+- (instancetype)initWithColors:(NSArray *)colors saveToCameraRoll:(BOOL)save index:(NSUInteger)index;
 @end
